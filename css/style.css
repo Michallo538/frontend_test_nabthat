@@ -157,6 +157,7 @@ footer {
   justify-content: space-between;
   color: #292A31;
   position: relative;
+  align-items: center;
 }
 footer .nabthat-container {
   width: 9rem;
@@ -177,20 +178,27 @@ footer .sideline-nabthat:after {
   flex: 1;
   content: "";
 }
-footer .footer-animation {
+footer .footer-animation-border-container {
+  padding-left: 2rem;
+  position: static;
+}
+footer .footer-animation-border-container .footer-animation-border {
   outline: solid;
+}
+footer .footer-animation-border-container .footer-animation-border:hover {
+  transition: 0.5s;
+  outline: solid #AB8555;
+}
+footer .footer-animation-border-container .footer-animation {
   font-size: larger;
-  outline-offset: 5px;
   display: inline-block;
   cursor: pointer;
   text-align: left;
   transition: transform 0.5s;
-  margin-left: 2rem;
 }
-footer .footer-animation:hover {
+footer .footer-animation-border-container .footer-animation:hover {
   transition: 0.5s;
   color: #9195A3;
-  outline: solid #AB8555;
 }
 footer .button-secondary {
   background-color: transparent;

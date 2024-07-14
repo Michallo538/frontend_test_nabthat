@@ -202,6 +202,8 @@ footer {
     justify-content: space-between;
     color: $footer-text;
     position: relative;
+    align-items: center;
+
 
     .nabthat-container {
         width: 9rem;
@@ -226,21 +228,33 @@ footer {
         content: '';
     }
 
-    .footer-animation {
-        outline: solid;
-        font-size: larger;
-        outline-offset: 5px;
-        display: inline-block;
-        cursor: pointer;
-        text-align: left;
-        transition: transform 0.5s;
-        margin-left: 2rem;
+    .footer-animation-border-container {
 
-        &:hover {
-            transition: 0.5s;
-            color: #9195A3;
-            outline: solid #AB8555;
+        padding-left: 2rem;
+        position: static;
 
+        .footer-animation-border {
+            outline: solid;
+
+            &:hover {
+                transition: 0.5s;
+                outline: solid #AB8555;
+
+            }
+        }
+
+        .footer-animation {
+            font-size: larger;
+            display: inline-block;
+            cursor: pointer;
+            text-align: left;
+            transition: transform 0.5s;
+
+            &:hover {
+                transition: 0.5s;
+                color: #9195A3;
+
+            }
         }
     }
 
