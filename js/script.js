@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Definiowanie elementów z DOM
     const replaceButton = document.getElementById('replaceButton');
     const appendButton = document.getElementById('appendButton');
     const showButton = document.getElementById('showButton');
@@ -8,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const footerOptions = document.getElementById('footerOptions');
     const nameSpan = document.getElementById('name');
 
+    // Inicjalizacja tablicy do przechowywania tekstów
     let texts = [];
 
+    // Pobieranie początkowych treści z pliku 'data.json' i zapisywanie ich w localStorage
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
@@ -18,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading JSON:', error));
 
+    // Nasłuchiwanie zdarzenia dla przycisku zamiany
     replaceButton.addEventListener('click', () => {
         const selectedOption = document.querySelector('input[name="option"]:checked').value;
         let selectedText;
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         content.innerHTML = `<p>${selectedText}</p>`;
     });
 
+    // Nasłuchiwanie zdarzenia dla przycisku dodawania
     appendButton.addEventListener('click', () => {
         const selectedOption = document.querySelector('input[name="option"]:checked').value;
         let selectedText;
@@ -56,18 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
         sortContent();
     });
 
+    // Nasłuchiwanie zdarzenia dla przycisku pokazania opcji stopki
     showButton.addEventListener('click', () => {
         footerOptions.style.display = footerOptions.style.display === 'grid' ? 'none' : 'grid';
     });
 
+    // Nasłuchiwanie zdarzenia dla przycisku resetowania
     resetButton.addEventListener('click', () => {
         content.innerHTML = '';
         nameSpan.style.display = 'none';
         footerOptions.style.display = 'none';
-
     });
 
-
+    // Funkcja sortująca treść
     function sortContent() {
         const paragraphs = Array.from(content.querySelectorAll('p'));
         paragraphs.sort((a, b) => a.textContent.localeCompare(b.textContent));
@@ -75,152 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
         paragraphs.forEach(p => content.appendChild(p));
     }
 
-
-
+    // Nasłuchiwanie zdarzenia dla przycisku pokazania opcji stopki (poprawione)
     if (showButton && nameSpan) {
         showButton.addEventListener('click', () => {
-            footerOptions.style.display = footerOptions.style.display === 'block'
+            footerOptions.style.display = footerOptions.style.display === 'block';
         });
-
     }
 
+    // Nasłuchiwanie zdarzenia dla przycisku pokazania imienia
     if (addNameButton && nameSpan) {
         addNameButton.addEventListener('click', () => {
             nameSpan.style.display = 'inline';
         });
     }
+
+    // Dodatkowe nasłuchiwanie dla przycisku pokazania imienia (duplikat, można usunąć)
     addNameButton.addEventListener('click', () => {
         nameSpan.style.display = 'inline';
     });
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const showButton = document.getElementById('showButton');
-    const footerOptions = document.getElementById('footerOptions');
-    const addNameButton = document.getElementById('addNameButton');
-    const nameSpan = document.getElementById('name');
-
-    const replaceButton = document.getElementById('replaceButton');
-    const appendButton = document.getElementById('appendButton');
-    const contentDiv = document.getElementById('content');
-
-    const newContentInput = document.getElementById('newContent');
-    const addContentButton = document.getElementById('addContentButton');
-    const editContentButton = document.getElementById('editContentButton');
-    const deleteContentButton = document.getElementById('deleteContentButton');
-    const contentSelect = document.getElementById('contentSelect');
-
-    // Load contents from localStorage or fetch from JSON
-    let contents = JSON.parse(localStorage.getItem('contents')) || [];
-
-    if (contents.length === 0) {
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                contents = data.contents;
-                localStorage.setItem('contents', JSON.stringify(contents));
-                populateContentSelect();
-            })
-            .catch(error => console.error('Error loading JSON:', error));
-    } else {
-        populateContentSelect();
-    }
-
-    function populateContentSelect() {
-        contentSelect.innerHTML = '';
-        contents.forEach((content, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = content;
-            contentSelect.appendChild(option);
-        });
-    }
-
-    if (showButton && footerOptions) {
-        showButton.addEventListener('click', () => {
-            footerOptions.style.display = footerOptions.style.display === 'block' ? 'none' : 'block';
-        });
-    }
-
-    if (addNameButton && nameSpan) {
-        addNameButton.addEventListener('click', () => {
-            nameSpan.style.display = 'inline';
-        });
-    }
-
-    replaceButton.addEventListener('click', () => {
-        const selectedOption = document.querySelector('input[name="option"]:checked').value;
-        let selectedText;
-
-        if (selectedOption === '1') {
-            selectedText = contents[0];
-        } else if (selectedOption === '2') {
-            selectedText = contents[1];
-        } else {
-            selectedText = contents[Math.floor(Math.random() * contents.length)];
-        }
-
-        contentDiv.innerHTML = `<p>${selectedText}</p>`;
-    });
-
-    appendButton.addEventListener('click', () => {
-        const selectedOption = document.querySelector('input[name="option"]:checked').value;
-        let selectedText;
-
-        if (selectedOption === '1') {
-            selectedText = contents[0];
-        } else if (selectedOption === '2') {
-            selectedText = contents[1];
-        } else {
-            selectedText = contents[Math.floor(Math.random() * contents.length)];
-        }
-
-        if (!contentDiv.innerHTML.includes(selectedText)) {
-            const paragraph = document.createElement('p');
-            paragraph.textContent = selectedText;
-            contentDiv.appendChild(paragraph);
-        } else {
-            alert('Treść już istnieje!');
-        }
-
-        sortContent();
-    });
-
-    addContentButton.addEventListener('click', () => {
-        const newContent = newContentInput.value.trim();
-        if (newContent) {
-            contents.push(newContent);
-            localStorage.setItem('contents', JSON.stringify(contents));
-            newContentInput.value = '';
-            populateContentSelect();
-        }
-    });
-
-    editContentButton.addEventListener('click', () => {
-        const selectedIndex = contentSelect.value;
-        const newContent = newContentInput.value.trim();
-        if (selectedIndex && newContent) {
-            contents[selectedIndex] = newContent;
-            localStorage.setItem('contents', JSON.stringify(contents));
-            newContentInput.value = '';
-            populateContentSelect();
-        }
-    });
-
-    deleteContentButton.addEventListener('click', () => {
-        const selectedIndex = contentSelect.value;
-        if (selectedIndex) {
-            contents.splice(selectedIndex, 1);
-            localStorage.setItem('contents', JSON.stringify(contents));
-            populateContentSelect();
-        }
-    });
-
-    function sortContent() {
-        const paragraphs = Array.from(contentDiv.querySelectorAll('p'));
-        paragraphs.sort((a, b) => a.textContent.localeCompare(b.textContent));
-        contentDiv.innerHTML = '';
-        paragraphs.forEach(p => contentDiv.appendChild(p));
-    }
 });
