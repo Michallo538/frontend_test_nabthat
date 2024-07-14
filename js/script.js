@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedOption === '2') {
             selectedText = texts[1];
         } else {
-            selectedText = texts[Math.floor(Math.random() * (texts.length - 2)) + 2];
+            selectedText = getRandomUniqueText();
         }
 
         content.innerHTML = `<p>${selectedText}</p>`;
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedOption === '2') {
             selectedText = texts[1];
         } else {
-            selectedText = texts[Math.floor(Math.random() * (texts.length - 2)) + 2];
+            selectedText = getRandomUniqueText();
         }
 
         if (!content.innerHTML.includes(selectedText)) {
@@ -60,6 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortContent();
     });
+
+    // Funkcja zwracająca losowy unikalny tekst
+    function getRandomUniqueText() {
+        let uniqueText;
+        let attempts = 0;
+        do {
+            uniqueText = texts[Math.floor(Math.random() * texts.length)];
+            attempts++;
+            if (attempts > 10) {
+                alert('Nie można znaleźć unikalnej treści.');
+                break;
+            }
+        } while (content.innerHTML.includes(uniqueText));
+        return uniqueText;
+    }
 
     // Nasłuchiwanie zdarzenia dla przycisku pokazania opcji stopki
     showButton.addEventListener('click', () => {
@@ -81,22 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
         paragraphs.forEach(p => content.appendChild(p));
     }
 
-    // Nasłuchiwanie zdarzenia dla przycisku pokazania opcji stopki (poprawione)
-    if (showButton && nameSpan) {
-        showButton.addEventListener('click', () => {
-            footerOptions.style.display = footerOptions.style.display === 'block';
-        });
-    }
-
     // Nasłuchiwanie zdarzenia dla przycisku pokazania imienia
     if (addNameButton && nameSpan) {
         addNameButton.addEventListener('click', () => {
-            nameSpan.style.display = 'inline';
+            nameSpan.style.display = 'flex';
         });
     }
-
-    // Dodatkowe nasłuchiwanie dla przycisku pokazania imienia (duplikat, można usunąć)
-    addNameButton.addEventListener('click', () => {
-        nameSpan.style.display = 'inline';
-    });
 });
