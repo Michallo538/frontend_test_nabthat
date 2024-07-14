@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie Rekrutacyjne</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/" class="logo"><img src="/images/HTML5_1Color_White.png" alt="HTML5 Logo"></a>
+        </div>
+        <div class="header-title">Zadanie rekrutacyjne <span id="name" class="name">Michał Mazur</span>
+        </div>
+    </header>
+    <main>
+        <h1>Nagłówek H1</h1>
+        <div class="block-row">
+            <div class="block first-block">
+                <h3>Blok Pierwszy</h3>
+                <form>
+                    <div class="radio-option">
+                        <input type="radio" id="option1" name="option" value="1">
+                        <label for="option1">Opcja pierwsza</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="option2" name="option" value="2">
+                        <label for="option2">Opcja druga</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="random" name="option" value="random">
+                        <label for="random">Opcja losowa</label>
+                    </div>
+                </form>
+            </div>
+            <div class="block second-block">
+                <h3>Blok Drugi</h3>
+                <button id="replaceButton" class="button-primary">Zastąp</button>
+                <button id="appendButton" class="button-secondary">Doklej</button>
+            </div>
+            <div class="block third-block">
+                <h3>Blok z długą nazwą która sama się przytnie...</h3>
+                <div id="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid minus quae ipsum distinctio!
+                        Odit saepe asperiores culpa iure dicta quos blanditiis laudantium eveniet id, officiis, ipsam
+                        laborum magni temporibus libero sequi sed repellendus consequuntur! Magnam veniam, commodi
+                        placeat illum sit ducimus rerum quas odio reprehenderit impedit ratione est praesentium vel
+                        pariatur maxime sapiente voluptas quia inventore! Atque obcaecati ipsam earum mollitia sit
+                        tempore dignissimos, nemo deserunt quia illo rem. Necessitatibus corrupti quis blanditiis
+                        perferendis maxime! Obcaecati aut dolorum qui accusantium aspernatur eveniet quam, omnis, illo
+                        inventore, iure a consectetur molestiae debitis. Harum laboriosam sed ipsa error labore,
+                        blanditiis eaque voluptas!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-animation">CSS<br> IS<br> <span class="awesome-footer-animation">AWESOME</span></div>
+        <div class="nabthat-container">
+            <p><span class="sideline-nabthat">nabthat</span></p>
+        </div>
+        <button id="showButton" class="button-secondary">Pokaż <i class="arrow up"></i></button>
+        <div id="footerOptions" style="display: none;">
+            <div>
+                <i class="arrow right"></i> <button id="resetButton" class="button-secondary">ZRESETUJ
+                    USTAWIENIA</button>
+            </div>
+            <div>
+                <i class="arrow right"></i> <button id="addNameButton" class="button-secondary">POKAŻ DANE
+                    OSOBOWE</button>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
