@@ -10,3 +10,7 @@ Ze wzgledu na Uniwersytet ktory zabiera mi bardzo duzo czasu. Niestety nie udalo
 
 Jezeli bym mogl zrobic ten test jeszcze raz od poczatku, jestem pewien ze teraz moglbym wykonac wszystkie 'zadania' bez problemu tak jak I dodatkowe 
 Oraz przepraszam za moj jezyk Polski, mieszkam w Anglii od 10 lat (przez co moge miec problem z pisaniem) i szukam powrotu do Polski :)
+
+
+Link do Strony netlify:
+https://kaleidoscopic-bombolone-222d3d.netlify.app
