@@ -1,0 +1,12 @@
+Lista rzeczy ktorych nie udalo mi sie wykonac:
+Ze wzgledu na Uniwersytet ktory zabiera mi bardzo duzo czasu. Niestety nie udalo mi sie wykonac wielu rzeczy z listy 
+
+- Logo z css - ktore zmienia kolor podczas funkcji hover
+- Div-y nie ukladaja sie tak jak na zdjeciu task-mobile.
+- Jezeli kolory na przyciskach sie nie zgadzaja za co przepraszam - jestem daltonista :(
+- Footer Options niestety nie udalo mi sie zrobic bez uzycia javascript - jak bym robil jeszcze raz to bym zrobil za uzyciem checkboxa  I funckja check.
+- CSS IS AWESOME border ktory sie ma animacje obracania sie - Nie udalo mi sie zrobic tego ale teraz juz umialbym ale nie mam juz czasu :(
+
+
+Jezeli bym mogl zrobic ten test jeszcze raz od poczatku, jestem pewien ze teraz moglbym wykonac wszystkie 'zadania' bez problemu tak jak I dodatkowe 
+Oraz przepraszam za moj jezyk Polski, mieszkam w Anglii od 10 lat (przez co moge miec problem z pisaniem) i szukam powrotu do Polski :)
